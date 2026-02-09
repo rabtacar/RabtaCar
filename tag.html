@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RabtaCar - Smart Vehicle Alert System. Notify vehicle owner instantly without sharing phone numbers.">
+    <title>RabtaCar Alert System | #GetFoundNow</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            /* Index.html wala primary color aur professional gradient */
+            background: linear-gradient(135deg, #C9FC01 0%, #FFD700 50%, #FFA500 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .container {
+            background: white;
+            border-radius: 24px;
+            padding: 35px 30px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+            text-align: center;
+        }
+        
+        .brand-name { font-size: 38px; font-weight: 800; color: #000; margin-bottom: 5px; }
+        .tagline { font-size: 14px; color: #666; font-weight: 600; margin-bottom: 20px; }
+        
+        .tag-display {
+            background: #f1f3f5;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            border: 2px dashed #C9FC01;
+            font-size: 18px;
+        }
+
+        .alert-options { display: grid; gap: 12px; margin-bottom: 25px; }
+
+        .alert-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 16px;
+            background: white;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .alert-btn:hover {
+            border-color: #C9FC01;
+            background: #fafafa;
+            transform: translateX(5px);
+        }
+
+        .alert-btn.active {
+            border-color: #C9FC01;
+            background: #fafff0;
+            box-shadow: 0 4px 15px rgba(201, 252, 1, 0.3);
+        }
+
+        .alert-btn .icon { margin-right: 15px; font-size: 22px; }
+
+        .notify-section { display: none; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .whatsapp-btn {
+            display: block;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 18px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .urdu-text {
+            font-family: 'Urdu Typesetting', serif;
+            display: block;
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+
+        .footer { margin-top: 25px; color: #999; font-size: 12px; border-top: 1px solid #eee; padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="brand-name">RabtaCar</div>
+    <div class="tagline">#GetFoundNow</div>
+    
+    <div class="tag-display" id="tagIdBox">TAG: LOADING...</div>
+
+    <p style="margin-bottom: 20px; color: #444; font-weight: 600;">⚠️ گاڑی کے مالک کو مطلع کرنے کے لیے مسئلہ منتخب کریں</p>
+
+    <div class="alert-options">
+        <button class="alert-btn" onclick="setIssue('Wrong Parking', '🚫')">
+            <span class="icon">🚫</span> Wrong Parking / غلط پارکنگ
+        </button>
+        <button class="alert-btn" onclick="setIssue('Towing Alert', '🚨')">
+            <span class="icon">🚨</span> Vehicle Being Towed / گاڑی ٹو ہو رہی ہے
+        </button>
+        <button class="alert-btn" onclick="setIssue('Lights/Window', '💡')">
+            <span class="icon">💡</span> Lights/Window Open / لائٹس یا ونڈو کھلی ہے
+        </button>
+        <button class="alert-btn" onclick="setIssue('Emergency', '⚠️')">
+            <span class="icon">⚠️</span> Emergency Situation / ہنگامی صورتحال
+        </button>
+    </div>
+
+    <div id="notifyArea" class="notify-section">
+        <a id="waLink" href="#" class="whatsapp-btn">
+            <span class="urdu-text">مطلع کریں</span>
+            <span>SEND ALERT VIA WHATSAPP</span>
+        </a>
+    </div>
+
+    <div class="footer">
+        🔒 Privacy Protected. Numbers are never shared.<br>
+        Powered by <a href="/" style="color: #666;">RabtaCar Pakistan</a>
+    </div>
+</div>
+
+<script>
+    // URL se Tag ID nikalna (e.g. tag.html?id=RBC-1050)
+    const urlParams = new URLSearchParams(window.location.search);
+    const tagID = urlParams.get('id') || "RBC-GENERAL";
+    document.getElementById('tagIdBox').innerText = "VEHICLE TAG: " + tagID;
+
+    function setIssue(issue, icon) {
+        // UI Update
+        document.querySelectorAll('.alert-btn').forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        
+        // Show WhatsApp Button
+        document.getElementById('notifyArea').style.display = 'block';
+        
+        // WhatsApp Link Generate (Match Apps Script Regex)
+        const waNumber = "923167772969";
+        const message = `RabtaCar Alert!\nTag: ${tagID}\nIssue: ${issue} ${icon}`;
+        document.getElementById('waLink').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+        
+        // Auto Scroll
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
