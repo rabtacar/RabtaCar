@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RabtaCar - Pakistan's first smart vehicle communication system. Contact car owners without sharing phone numbers. Privacy protected, WhatsApp-based alerts.">
+    <meta name="keywords" content="parking tag, vehicle alert, Pakistan, car safety, smart parking, QR code">
+    <title>RabtaCar - Smart Vehicle Communication | #GetFoundNow</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #C9FC01;
+            --primary-dark: #A0CC00;
+            --accent: #FFD700;
+            --dark: #1a1a1a;
+            --gray: #666;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .urdu {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+            direction: rtl;
+            line-height: 1.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            font-size: 72px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .tagline {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        
+        .hero h2 {
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        
+        .hero-subtitle.urdu {
+            font-size: 22px;
+            margin-top: 20px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--dark);
+            color: var(--primary);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--dark);
+            border: 3px solid var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--dark);
+            color: white;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 20px;
+            background: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(201, 252, 1, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .step {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--dark);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+        }
+        
+        .step-icon {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+        
+        .step h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .step p {
+            color: var(--gray);
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 20px;
+            background: white;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 60px auto 0;
+        }
+        
+        .pricing-card {
+            background: white;
+            border: 3px solid #e8e8e8;
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(201, 252, 1, 0.3);
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--primary);
+            border-width: 4px;
+            transform: scale(1.05);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--dark);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .pricing-card h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--dark);
+            margin: 20px 0;
+        }
+        
+        .price-currency {
+            font-size: 24px;
+            vertical-align: super;
+        }
+        
+        .price-note {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .features-list li {
+            padding: 10px 0;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .features-list li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 20px;
+            margin-right: 15px;
+            filter: brightness(0.7);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 20px;
+            background: var(--light-bg);
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 60px auto 0;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+        
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 28px;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 30px;
+            color: var(--gray);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 30px 25px;
+        }
+        
+        /* Order Section */
+        .order {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            text-align: center;
+        }
+        
+        .order h2 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .order p {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 40px;
+        }
+        
+        .order-info {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 40px auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .order-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .order-info p {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 20px 30px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 48px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .hero h2 {
+                font-size: 24px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            cursor: pointer;
+            z-index: 1000;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="logo">RabtaCar</div>
+            <div class="tagline">#GetFoundNow</div>
+            <h2>Pakistan's First Smart Vehicle Communication System</h2>
+            <p class="hero-subtitle">Contact vehicle owners without sharing phone numbers. Privacy protected, instant WhatsApp alerts.</p>
+            <p class="hero-subtitle urdu">گاڑی کے مالک سے رابطہ کریں - بغیر نمبر شیئر کیے۔ فوری واٹس ایپ الرٹ، مکمل رازداری۔</p>
+            
+            <div class="cta-buttons">
+                <a href="https://wa.me/923167772969?text=I want to order RabtaCar tags" class="btn btn-primary">Order Now - Rs. 800</a>
+                <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose RabtaCar?</h2>
+            <p class="section-subtitle">The smartest way to protect your vehicle and stay connected in any situation</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy Protected</h3>
+                    <p class="urdu">رازداری محفوظ</p>
+                    <p>Your phone number is never visible to anyone. Complete anonymity guaranteed.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>WhatsApp Based</h3>
+                    <p class="urdu">واٹس ایپ پر مبنی</p>
+                    <p>No app downloads, no sign-ups. Works on any smartphone instantly.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Alerts</h3>
+                    <p class="urdu">فوری الرٹ</p>
+                    <p>Get notified within 2-5 minutes. Never miss important vehicle alerts.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💧</div>
+                    <h3>Waterproof & Durable</h3>
+                    <p class="urdu">واٹر پروف اور پائیدار</p>
+                    <p>UV-resistant lamination. Lasts 2-3 years in Pakistani weather.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🇵🇰</div>
+                    <h3>Made for Pakistan</h3>
+                    <p class="urdu">پاکستان کے لیے بنایا گیا</p>
+                    <p>Bilingual support, local understanding, designed for Pakistani roads.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Easy Installation</h3>
+                    <p class="urdu">آسان انسٹالیشن</p>
+                    <p>Stick inside windshield. Takes 30 seconds. Includes installation guide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title" style="color: #1a1a1a;">How RabtaCar Works</h2>
+            <p class="section-subtitle" style="color: #333;">Get started in 4 simple steps</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">🚗</div>
+                    <h3>Stick on Windshield</h3>
+                    <p>Clean the inside of your rear windshield and apply the RabtaCar QR sticker</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">📱</div>
+                    <h3>Bystander Scans</h3>
+                    <p>Anyone with a smartphone scans the QR code when they need to alert you</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">💬</div>
+                    <h3>Select Issue</h3>
+                    <p>They choose the issue type (parking, towing, emergency) and send via WhatsApp</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">🔔</div>
+                    <h3>You Get Notified</h3>
+                    <p>Receive instant SMS alert on your phone. Check your vehicle immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">Choose the package that works for you</p>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Single Tag</h3>
+                    <div class="price"><span class="price-currency">Rs.</span>800</div>
+                    <p class="price-note">One-time payment</p>
+                    <ul class="features-list">
+                        <li>1 RabtaCar QR Tag</li>
+                        <li>Waterproof & UV-resistant</li>
+                        <li>Installation guide</li>
+                        <li>Lifetime validity</li>
+                        <li>Free delivery (Rs. 150 extra)</li>
+                    </ul>
+                    <a href="https://wa.me/923167772969?text=I want to order 1 RabtaCar tag (Rs. 800)" class="btn btn-primary">Order Now</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Pack of 2</h3>
+                    <div class="price"><span class="price-currency">Rs.</span>1,200</div>
+                    <p class="price-note">Save Rs. 400 + Free delivery</p>
+                    <ul class="features-list">
+                        <li>2 RabtaCar QR Tags</li>
+                        <li>Perfect for 2 vehicles</li>
+                        <li>Waterproof & UV-resistant</li>
+                        <li>Installation guides</li>
+                        <li>FREE delivery (All Pakistan)</li>
+                    </ul>
+                    <a href="https://wa.me/923167772969?text=I want to order 2 RabtaCar tags (Rs. 1,200)" class="btn btn-primary">Order Now</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Bulk Orders</h3>
+                    <div class="price"><span class="price-currency">Rs.</span>600</div>
+                    <p class="price-note">Per tag (10+ tags)</p>
+                    <ul class="features-list">
+                        <li>Minimum 10 tags</li>
+                        <li>Corporate discounts available</li>
+                        <li>Housing societies welcome</li>
+                        <li>Custom branding options</li>
+                        <li>FREE delivery</li>
+                    </ul>
+                    <a href="https://wa.me/923167772969?text=I want to order bulk RabtaCar tags (10+)" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">How does RabtaCar protect my privacy?</div>
+                    <div class="faq-answer">
+                        <p>Your phone number is NEVER displayed on the tag or shared with anyone. When someone scans your tag, they send a message through our system, and we forward the alert to you via SMS. Complete anonymity guaranteed.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do I need to download an app?</div>
+                    <div class="faq-answer">
+                        <p>No! RabtaCar works through WhatsApp, which most people already have. The person alerting you just scans the QR code with their camera app - no special app needed by anyone.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Where should I place the tag?</div>
+                    <div class="faq-answer">
+                        <p>Stick it on the INSIDE of your rear windshield, bottom corner. This protects it from weather and vandalism while keeping it easily visible and scannable.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How long does the tag last?</div>
+                    <div class="faq-answer">
+                        <p>2-3 years! Our tags use UV-resistant lamination and premium vinyl, tested in Pakistani weather conditions (40-50°C summers). Apply it once and forget about it.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do you deliver to my city?</div>
+                    <div class="faq-answer">
+                        <p>Yes! We deliver ALL across Pakistan via TCS/Leopards courier. Major cities (Lahore, Karachi, Islamabad) get delivery in 1-2 days. Other cities in 2-4 days.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I use it for my bike/motorcycle?</div>
+                    <div class="faq-answer">
+                        <p>Absolutely! RabtaCar works for cars, bikes, scooters, rickshaws, and any vehicle with a windshield or visible surface. Same price, same protection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="order" id="order">
+        <div class="container">
+            <h2>Ready to Protect Your Vehicle?</h2>
+            <p>Join hundreds of smart vehicle owners across Pakistan</p>
+            
+            <div class="order-info">
+                <h3>📞 Order via WhatsApp</h3>
+                <p><strong>+92 316 7772969</strong></p>
+                <p>Message us your details and we'll process your order within 24 hours</p>
+                <br>
+                <p><strong>Delivery:</strong> All Pakistan (TCS/Leopards)</p>
+                <p><strong>Payment:</strong> Cash on Delivery available</p>
+                <p><strong>Guarantee:</strong> 100% Money-back if not satisfied</p>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="https://wa.me/923167772969?text=I want to order RabtaCar tags. Please send me details." class="btn btn-primary">Order Now on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo" style="color: var(--primary); font-size: 48px;">RabtaCar</div>
+            <p style="margin: 20px 0; color: #999;">#GetFoundNow</p>
+            
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+                <a href="https://wa.me/923167772969">Contact</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 RabtaCar - Made with ❤️ in Pakistan</p>
+                <p style="margin-top: 10px;">Privacy Protected | Instant Alerts | All Pakistan Delivery</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/923167772969?text=Hello RabtaCar, I have a question" class="whatsapp-float" target="_blank">
+        📱
+    </a>
+
+    <!-- FAQ Accordion Script -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
